@@ -1,0 +1,80 @@
+{
+    "salary": 116000,
+    "retirement": {
+        "401k-contribution": 0.08,
+        "401k-company-match": 0.06,
+        "retirement-age": 59,
+        "current-age": 22
+    },
+    "taxes": {
+        "federal-brackets": [
+            {
+                "rate": 0.10,
+                "maximum": 11000
+            },
+            {
+                "rate": 0.12,
+                "maximum": 44725
+            },
+            {
+                "rate": 0.22,
+                "maximum": 95375
+            },
+            {
+                "rate": 0.24,
+                "maximum": 182100
+            },
+            {
+                "rate": 0.32,
+                "maximum": 231250
+            },
+            {
+                "rate": 0.35,
+                "maximum": 578128
+            },
+            {
+                "rate": 0.37
+            }
+        ],
+        "state-brackets": [
+            {
+                "rate": 0.05
+            }
+        ],
+        "social-security-and-medicare": 0.0765
+    },
+    "expenses": [
+        {
+            "name": "Car Insurance",
+            "amount": 300
+        },
+        {
+            "name": "Rent",
+            "amount": 1067
+        },
+        {
+            "name": "Benefits",
+            "amount": 100
+        },
+        {
+            "name": "Utilities",
+            "amount": 150
+        },
+        {
+            "name": "Food",
+            "amount": 1000
+        },
+        {
+            "name": "Mobile",
+            "amount": 50
+        },
+        {
+            "name": "Subscriptions",
+            "amount": 100
+        },
+        {
+            "name": "Gym",
+            "amount": 250
+        }
+    ]
+}
