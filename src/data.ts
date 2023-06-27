@@ -28,9 +28,7 @@ export type Expense = {
   amount: number;
 }
 
-export interface Expenses {
-  expenses: Expense[];
-}
+export type Expenses = Expense[];
 
 export interface State {
   basicInfo: BasicInfo;
@@ -79,8 +77,8 @@ export function calculateRetirement401K(basicInfo: BasicInfo, retirement401K: Re
   const totalAmount = contributionAmount + matchingAmount;
   const taxReduction = contributionAmount * 0.29; // TODO: Formalize this multiplier
   const years = retirement401K.retirementAge - retirement401K.currentAge;
-  const finalValue = Math.abs(fv(0.08, years, totalAmount, 0));
-  const yearOneValue = Math.abs(fv(0.08, years, 0, totalAmount));
+  const finalValue = Math.abs(fv(0.10, years, totalAmount, 0));
+  const yearOneValue = Math.abs(fv(0.10, years, 0, totalAmount));
     
   const derivedRetirement401K: DerivedRetirement401K = {
     contributionAmount,
@@ -135,8 +133,8 @@ export function calculateTaxes(basicInfo: BasicInfo, taxes: Taxes, derivedRetire
 
 export function calculateExpenses(expenses: Expenses, derivedBasicInfo: DerivedBasicInfo, derivedTaxes: DerivedTaxes): DerivedExpenses {
   let totalExpenses = 0;
-  for (let i = 0; i < expenses.expenses.length; i++) {
-    totalExpenses += expenses.expenses[i].amount;
+  for (let i = 0; i < expenses.length; i++) {
+    totalExpenses += expenses[i].amount;
   }
   const finalSurplus = derivedBasicInfo.netMonthlySalary - derivedTaxes.totalMonthlyTax - totalExpenses;
 
@@ -205,8 +203,7 @@ export default function loadData(): State {
    ssMedicareRate: data.taxes["social-security-and-medicare"]
  };
 
- const expenses: Expenses = { expenses: [] };
- expenses.expenses = data.expenses;
+ const expenses: Expenses = data.expenses;
 
  const state: State = {
    basicInfo: basicInfo,

@@ -1,9 +1,9 @@
 {
-    "salary": 116000,
+    "salary": 100000,
     "retirement": {
-        "401k-contribution": 0.08,
+        "401k-contribution": 0.10,
         "401k-company-match": 0.06,
-        "retirement-age": 59,
+        "retirement-age": 60,
         "current-age": 22
     },
     "taxes": {
@@ -46,11 +46,15 @@
     "expenses": [
         {
             "name": "Car Insurance",
-            "amount": 300
+            "amount": 200
+        },
+        {
+            "name": "Car Payment",
+            "amount": 500
         },
         {
             "name": "Rent",
-            "amount": 1067
+            "amount": 2000
         },
         {
             "name": "Benefits",
@@ -65,16 +69,12 @@
             "amount": 1000
         },
         {
-            "name": "Mobile",
-            "amount": 50
-        },
-        {
             "name": "Subscriptions",
             "amount": 100
         },
         {
             "name": "Gym",
-            "amount": 250
+            "amount": 50
         }
     ]
 }

@@ -1,46 +1,52 @@
-import { fv } from 'financial';
-import React, { useState } from 'react';
+import { Container, Paper, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from '@mui/material';
+import React from 'react';
 
-import '../App.css';
-import data from "../../data.json"
-import { State } from '../../data';
+import { DerivedRetirement401K, Retirement401K } from "../../data"
+import { formatCash } from '../../utils';
 
-type Callback = (input: string, value: number) => void;
 
-function Retirement(props: { state: any; callback: Callback}) {
-  const handleSubmit = (e: { preventDefault: () => void; }) => {
-    e.preventDefault();
-    console.log('subbed');
-  }
-
+function Retirement(props: { retirement401K: Retirement401K; derivedRetirement401K: DerivedRetirement401K;}) {
   return (
-    <div>
-      <div className="Section">
-        <header>
-          Retirement
-        </header>
-        <form onSubmit={handleSubmit}>
-          <label>
-            401K Contribution (%):
-            <input type="text" name="401k-contribution" value={props.state.editableState.retirement401K.contributionPercent}/>
-          </label>
-          <br></br>
-          <label>Annual Contributions: {props.state.calculatedState.get('contributionAmount')}</label><br></br>
-          <label>
-            401K Company Match:
-            <input type="text" name="401k-company-match" value={props.state.editableState.retirement401K.matchingPercent}/>
-          </label>
-          <br></br>
-          <label>Company Match: {props.state.calculatedState.get('matchingAmount')}</label><br></br>
-          <label>Total: {props.state.calculatedState.get('totalAmount')}</label><br></br>
-          <label>Tax Reduction: {props.state.calculatedState.get('taxReduction')}</label><br></br>
-          <label>Years: {props.state.calculatedState.get('years')} (From age {props.state.editableState.retirement401K.currentAge} to {props.state.editableState.retirement401K.retirementAge})</label><br></br>
-          <label>Retirement Value: {props.state.calculatedState.get('finalValue')}</label><br></br>
-          <label>Year 1 Value: {props.state.calculatedState.get('yearOneValue')}</label><br></br>
-          <input type="submit" value="Save" />
-        </form>
-      </div>
-    </div>
+    <Container maxWidth="sm" >
+      <Typography variant="h5" sx={{ mb: 2 }}>
+        Retirement
+      </Typography>
+      <TableContainer component={Paper} sx={{ mb: 4 }}>
+        <Table aria-label="Retirement Table">
+          <TableBody>
+            <TableRow>
+              <TableCell>Annual Contributions</TableCell>
+              <TableCell align="right">{formatCash(props.derivedRetirement401K.contributionAmount)}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Company Matching Contributions</TableCell>
+              <TableCell align="right">{formatCash(props.derivedRetirement401K.matchingAmount)}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Total Contributions</TableCell>
+              <TableCell align="right">{formatCash(props.derivedRetirement401K.totalAmount)}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Tax Reduction</TableCell>
+              <TableCell align="right">{formatCash(props.derivedRetirement401K.taxReduction)}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Years</TableCell>
+              <TableCell align="right">{props.derivedRetirement401K.years}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Retirement Value (Assuming 10% interest)</TableCell>
+              <TableCell align="right">{formatCash(props.derivedRetirement401K.finalValue)}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Value of Year One Contribution</TableCell>
+              <TableCell align="right">{formatCash(props.derivedRetirement401K.yearOneValue)}</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </Container>
+  
   );
 }
 
