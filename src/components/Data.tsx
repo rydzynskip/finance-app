@@ -67,7 +67,7 @@ function Data() {
 								color="success" 
 								onClick={save} 
 								fullWidth
-								sx={{ mt: 3}}
+								sx={{ mt: 3, color: "white" }}
 							>
 								Save Changes
 							</Button>

@@ -2,6 +2,8 @@
 
 Application for viewing basic financial information such as retirement, taxes, and expenses.
 
+https://rydzynskip.github.io/finance-app/
+
 
 ## Potential Future Work
 - Persistance
